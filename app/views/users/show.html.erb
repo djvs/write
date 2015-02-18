@@ -1,0 +1,60 @@
+<% if @user == nil %>
+
+That user couldn't be found!  Did they delete their account?
+
+<% else %>
+
+  <%= content_for :title do %><%= @user.safename %>
+  <% end %>
+
+  <h1>
+    <%= @user.safename %>
+  </h1>
+<% if current_user != nil %><p><a style="font-size:80%;" href="#" class="tagb" data-type="User" data-id="<%= @user.id.to_s %>" data-title="<%= @user.safename %>" data-tags="<%= @user.tags.where(:user_id => current_user.id).to_a.map{|x|x.tag}.join(", ") %>">(tag this user)</a></p>
+<% end %>
+
+
+<p id="user_<%= @user.id.to_s %>_tags" style="font-size:80%">
+<% if @user.tags != [] %>
+
+<%= render :partial => "tag/tags", :locals => {:pobj => @user} %>
+<% end %>
+</p>
+
+
+<% if @user.pic.url != "/pics/original/missing.png" %>
+<p>
+<%= image_tag @user.pic.url, :class => 'user_pic'%>
+</p>
+<% end %>
+<% if @user.bio != nil and @user.bio != "" %>
+<h2><%= @user.safename %>'s bio</h2>
+<div class="bio">
+<%= @user.bio.to_s.html_safe %>
+
+</div>
+<% else %>
+<h2><%= @user.safename %> has no bio.</h2>
+<% end %>
+
+<% if @subs != nil %>
+<h2><%= @user.safename%>'s poems</h2>
+<% @subs.each do |sub| %>
+<%= render :partial => "subs/box", :locals => {:sub => sub} %>
+<% end %>
+<%= paginate @subs %>
+
+
+<% else %>
+This user has no poems submitted.
+<% end %>
+
+
+
+
+
+
+
+
+
+<% end %>

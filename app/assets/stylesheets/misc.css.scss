@@ -1,0 +1,80 @@
+@import 'variables';
+
+
+.report-carousel .carousel-inner {
+    max-height: 180px;
+    overflow: hidden;
+    .item {
+        display: inline-block;
+        margin:0px 8px;
+        width:320px;
+        height:180px;
+        .iteminner{
+            width:320px;
+            height:180px;
+            display:inline-block;
+            vertical-align:top;
+        }
+    }
+    .caption{
+        background-color:rgba(0,0,0,0.5);
+        color:white;
+        font-weight:bold;
+    }
+}
+
+.smsuccess{
+    margin:0px 2px;
+    border-radius:3px;
+    padding:2px 6px;
+    color:white;
+    background-color:#00AA00;
+}
+.smerror{
+    margin:0px 2px;
+    border-radius:3px;
+    padding:2px 6px;
+    color:white;
+    background-color:#A81600;
+}
+
+div.cke_dialog_ui_html table[role=listbox] img.cke_hand{
+    max-width:50px !important;
+    max-height:50px !important;
+}
+div.cke_dialog_ui_vbox.cke_dialog_page_contents{
+    max-height:100%;
+    min-height:400px;
+    max-width:900px;
+    overflow:auto;
+}
+
+.userbox{
+    input[type=text], input[type=email], input[type=password]{
+        min-width:0px !important;
+        margin:0px !important;
+        padding:3px !important;
+        border-radius:4px;
+        border:solid 1px $border;
+    }
+}
+input[type=text], input[type=email], input[type=password]{
+    min-width:350px;
+    margin:4px 4px 4px 0px;
+    padding:4px;
+    border-radius:4px;
+    border:solid 1px $border;
+}
+
+.blankhtml{    
+    text-align:center;
+    margin:40px;
+    .blankhtmlcont{
+        display:inline-block;
+        background-color:rgba(255,255,255,0.3);
+        margin:0 auto;
+        padding:15px;
+        border-radius:8px;
+        border:solid 1px rgba(255,255,255,0.8);
+    }
+}

@@ -1,0 +1,17 @@
+<form ng-submit="submitSub()">
+    <h3 class="big" ng-if="sub.id">Editing: "<a ui-sref="poem({id: sub.id})">{{ sub.name }}</a>"</h3>
+    <h3 class="big" ng-if="!sub.id && !sub.name.length">New poem</h3>
+    <h3 class="big" ng-if="!sub.id && sub.name.length">New poem: "{{ sub.name }}"</h3>
+    <div class="field">
+        <h4>title:</h4>
+        <input type="text" ng-model="sub.name" placeholder="title" style="padding:4px;border-radius:3px;border:solid 1px #c0c0c0;width:100%;margin-bottom:10px;">
+    </div>
+    <div class="field">
+        <h4>body:</h4>
+        <textarea name="body"  ng-model="sub.body" ckval="sub.body" rows="45" cols="120" ck-editor></textarea>
+    </div>
+    <div class="field">
+        <input type="submit" value="submit" class="btn btn-primary">
+    </div>
+</form>
+

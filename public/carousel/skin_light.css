@@ -1,0 +1,261 @@
+/* ********** RESET ********** */
+/*html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%; }
+	
+body	{ }
+ol, ul  { list-style: none; }
+
+:focus  { outline: 0; }
+/* ********** RESET ********** */
+
+
+
+
+/* MAIN TAGS ################################### */	
+/*html { height: 100%;}
+
+body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande";
+	font-size:12px; line-height:18px;
+	color:#1a1a1a; 
+	text-align: left; 
+	margin:0px; padding:0px;  
+	position: relative;
+	height: 100%;
+	}
+*/
+
+ul.portfolio_items{
+	margin:0;
+	padding:0;
+}
+
+#full-screen-background-image {
+	z-index: -999;
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	}	
+	
+div.body{
+	text-align:center;
+}
+#main {
+	width: 100%;
+//	position: absolute;
+	}
+	
+#main .inner {
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	}
+	
+#bottom {
+	width: 100%;
+	height: 40px;
+	background:#333;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	}
+
+
+
+/* horizontal ##############################*/
+.horizontal {
+	background: #1a1a1a;
+	width: 100%;
+	margin: 0 auto;
+	height: 140px;
+	}
+	
+.horizontal .carousel {
+	width: 960px;
+	height: 140px;
+	margin: 0 auto;
+	position: relative;
+	}
+	
+.horizontal .carousel_container {
+	width: 663px; /* 3x220 + 3x1px margin */
+	height: 140px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 50px;
+	position: relative;
+	}
+	
+.horizontal ul  { 
+	height: 140px;
+	width: 1980px;
+}
+	
+.horizontal ul li {
+	width: 220px;
+	height: 140px;
+	display: block;
+	float: left;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	position: relative;
+	}
+	
+.horizontal ul li .text_content {
+	padding: 10px;
+	color: #fff;
+	}
+	
+.horizontal ul li a {
+	width: 220px;
+	height: 140px;
+	background: #CCC;
+	display: block;
+	color: #fff;
+	}
+	
+.horizontal ul li a.normal {
+	width: auto;
+	height: auto;
+	color: #fff;
+	background: none;
+	}
+	
+.horizontal ul li .caption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	}
+	
+	
+	
+
+/* vertical ##############################*/
+.vertical {
+	background: #1a1a1a;
+	width: 220px;
+	height: 100%;
+	margin: 0 auto;
+	}
+	
+.vertical .carousel {
+	width: 220px;
+	height: 423px;
+	margin: 0 auto;
+	position: relative;
+	padding: 100px 0;
+	}
+	
+.vertical .carousel_container {
+	width: 220px; /* 3x220 + 3x1px margin */
+	height: 423px;
+	overflow: hidden;
+	/*padding: 0 50px;*/
+	position: relative;
+	}
+	
+.vertical ul  { 
+	height: 1980px;
+	width: 220px;
+}
+	
+.vertical ul li {
+	width: 220px;
+	height: 140px;
+	display: block;
+	float: left;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	position: relative
+	}
+	
+.vertical ul li .text_content {
+	padding: 10px;
+	color: #fff;
+	}
+	
+.vertical ul li a {
+	width: 220px;
+	height: 140px;
+	background: #CCC;
+	display: block;
+	color: #fff;
+	}
+	
+.vertical ul li a.normal {
+	width: auto;
+	height: auto;
+	color: #fff;
+	background: none;
+	}
+	
+.vertical ul li .caption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	}
+	
+
+
+
+	
+.carousel_right, .carousel_left {
+	position: absolute;
+	width: 26px;
+	height: 51px;
+	display: block;
+	text-indent: -9999px;
+	}
+	
+.carousel_left { 
+	top: 45px; left:0px;
+	background: url(../images/prev.png) top left;
+	}
+.carousel_right { 
+	top: 45px; right:0px;
+	background: url(../images/next.png) top left;
+	}
+.carousel_right:hover, .carousel_left:hover {
+	background-position: bottom left;
+	}
+	
+.carousel_up, .carousel_down {
+	position: absolute;
+	width: 51px;
+	height: 26px;
+	display: block;
+	text-indent: -9999px;
+	}
+	
+.carousel_up { 
+	top: 20px; left:85px;
+	background: url(../images/up.png) top left;
+	}
+.carousel_down { 
+	bottom: 20px; left:85px;
+	background: url(../images/down.png) top left;
+	}
+.carousel_up:hover, .carousel_down:hover {
+	background-position: bottom left;
+	}
+	
+.disable { display: none; }

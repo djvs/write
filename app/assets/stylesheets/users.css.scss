@@ -1,0 +1,19 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'variables';
+
+.usermini{
+    margin:10px 7px 20px 7px;
+    border:solid 1px $border;
+    .userthumb{
+        margin:8px;
+        border:solid 1px $border;
+    }
+    .pbody{
+      overflow:auto;
+      max-width:100%;
+      display:inline-block;
+    }
+}

@@ -1,0 +1,9 @@
+<%= paginate @users %>
+
+<% @users.each do |x| %>
+
+<%= render :partial => "users/mini", :locals => {:user => x} %>
+
+<% end %>
+
+<%= paginate @users %>

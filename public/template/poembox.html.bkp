@@ -1,0 +1,53 @@
+
+<div class="post" id="post_{{ poem.id }}">
+    <div class="ptitle">
+        <div class="pbuttons">
+        <span ng-if="current_user != nil">
+            <a href="#" class="tagb" data-type="Sub" data-id="{{ poem.id.to_s  }}" data-title="{{ poem.name.gsub(/[^a-zA-Z0-9_ .,~-]/,"") }}" data-tags="{{ poem.tags.where(:user_id => current_user.id).to_a.map{|x|x.tag}.join(", ")  }}">
+             <img src="/images/interface/tag_green.png"> tag
+        </a>
+        <span ng-if="poem.user_id == ">
+        <span ng-if=" current_user.id == poem.user_id">
+            &bull; <a ui-sref="poem({ id: poem.id })"><img src="/images/interface/edit.png"> edit</a> &bull; 
+             <a ng-click="delete_confirm(poem)" class="deleteb"><img src="/images/interface/no.png"> delete</a>
+        </span>
+        </span>
+        </div>
+
+    <strong>
+        <a ui-sref="poem({id: poem.id })">{{ poem.name  }}</a>
+    </strong> 
+        by  <a ui-sref="user({userId: poem.user.id})">{{ poem.user.safename }}</a>
+
+    </div>
+
+    <div class="pbody" ng-bind-html="poem.body">
+      
+    </div>
+	<div class="ptags">
+		<div ng-if="poem.tags != []">
+			<div ng-include="tagbox"></div>
+        </div>
+
+			<!-- AddThis Button BEGIN -->
+			<div class="addthis_toolbox addthis_default_style" style="float:right;width:140px;text-align:right;padding:0px 5px;">
+				<a class="addthis_button_preferred_1" addthis:poem.safeurl="{{ poem.safeurl  }}" addthis:poem.sanitizedname="{{ poem.sanitizedname  }}"></a>
+				<a class="addthis_button_preferred_2" addthis:poem.safeurl="{{ poem.safeurl  }}" addthis:poem.sanitizedname="{{ poem.sanitizedname  }}"></a>
+				<a class="addthis_button_preferred_3" addthis:poem.safeurl="{{ poem.safeurl  }}" addthis:poem.sanitizedname="{{ poem.sanitizedname  }}"></a>
+				<a class="addthis_button_preferred_4" addthis:poem.safeurl="{{ poem.safeurl  }}" addthis:poem.sanitizedname="{{ poem.sanitizedname  }}"></a>
+				<a class="addthis_button_compact"  addthis:poem.safeurl="{{ poem.safeurl  }}" addthis:poem.sanitizedname="{{ poem.sanitizedname  }}"></a>
+				<a class="addthis_counter addthis_bubble_style"  addthis:poem.safeurl="{{ poem.safeurl  }}" addthis:poem.sanitizedname="{{ poem.sanitizedname  }}"></a>
+			</div>
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50e87d41635515a5"></script>
+			<!-- AddThis Button END -->
+
+
+		<a ui-sref="poem({ id: poem.id })" style="float:right;">
+			<img src="/images/interface/refresh.png">
+			<span ng-if="!poem.comments.length">no comments</span>
+            <span ng-if="poem.comments.length" ng-pluralize count="poem.comments.count" when="{'1': 'comment', 'other': 'comments'}"></span>
+		</a>
+	</div>
+</div>
+
+<div ng-if="showcomments" ng-include="'commentbox.html'"></div>

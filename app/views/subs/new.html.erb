@@ -1,0 +1,30 @@
+<% content_for :head do %>
+        <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+<% end %>
+
+
+
+<% if @sub.id != nil 
+target =  "/sub/" + @sub.id.to_s + "/edit" %>
+<h1 class="big">Editing <%= @sub.name %></h1>
+
+<% else 
+target = "/sub/new" %>
+<h1 class="big">New poem</h1>
+<% end %>
+
+<%= form_tag target do |f| %>
+
+  <div class="field">
+    <label for="sub_name" >Name</label><br />
+    <%= text_field_tag :name, @sub.name %>
+  </div>
+  <div class="field">
+    <label for="sub_body">Body</label><br />
+    <%= text_area_tag :body, @sub.body, :rows => "45", :cols => "120", :class => "ckeditor"%>
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
+

@@ -1,0 +1,31 @@
+
+<div class="usermini" id ="user_<%= user.id.to_s %>">
+<div class="ptitle">
+    <div class="pbuttons">
+    <% if current_user != nil%>
+	<% if current_user.id == user.id %>
+         <a href="/me">edit</a> 
+	<% end %>
+    <% end %>
+    </div>
+
+<strong><a href="<%= user.safeurl%>"><%= user.safename %></a></strong>
+
+</div>
+
+<div class="pbody">
+<% pic = user.pic.url("thumb") %>
+  <% if pic != "/pics/thumb/missing.png" %>
+    <img src="<%= pic %>" align="left" class="user_pic">
+  <% end %> 
+  <%= user.bio.to_s.html_safe %>
+</div>
+
+<% if user.tags != [] %>
+<div class="ptags">
+<%= render :partial => "tag/tags", :locals => {:pobj => user} %>
+</div>
+<% end %>
+
+</div>
+

@@ -1,0 +1,9 @@
+<div class="cloud_container">
+    <h1>Tags used on users and poems:</h1>
+    <div class="tagcloud" add-masonry>
+        <div ng-repeat="tag in cloud" class="tagcloudbox" ui-sref="tag({tag: tag[0] })"
+            ng-style="{'font-size': (0.16 / Math.pow(Math.sqrt(tag[1]),-4) + 1.1 + 'em')}">
+            {{ tag[0] }}
+        </div>
+    </div>
+</div>

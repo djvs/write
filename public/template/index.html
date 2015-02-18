@@ -1,0 +1,13 @@
+<h2>Newest submissions:</h2>
+
+<img ng-if="loading" src="/img/loading.gif">
+
+
+<div ng-if="!loading && !poems.length">
+    <p>Nobody has ever submitted a poem to the site!  You should change that.</p>
+</div>
+
+<div ng-if="poems.length && !loading" class="poems" add-masonry infinite-scroll="newPage()" infinite-scroll-distance="3">
+  <div ng-repeat="sub in poems" sub="sub" class="brick">
+  </div>
+</div>

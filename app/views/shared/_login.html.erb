@@ -1,0 +1,19 @@
+<form class="loginform" ng-submit="loginuser()" id="loginform">
+    <div class="goleft">
+        <input ng-model="login.email" type="email" placeholder="email">
+        <input ng-model="login.password" type="password" placeholder="password">
+    </div>
+    <div class="goright">
+        <input type="checkbox" name="remember_me" id="remember_me">
+        <label for="remember_me">remember me</label>
+        <input type="submit" class="btn btn-primary" value="sign in" ng-disabled="!(login.email.length && login.password.length)">
+    </div>
+    <div class="goleft">
+          <a ui-sref="lostpw">lost password?</a>
+          <a ui-sref="signup">sign up</a>
+    </div>
+    <div class="smerror goleft" ng-if="wrongpassword">
+        <strong>(X)</strong> sorry, no matching user and password
+
+    </div>
+</form>

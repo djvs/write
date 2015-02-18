@@ -1,0 +1,16 @@
+<p>Welcome to PoetryTrain!  Here are our newest poems:</p>
+
+<% if @subs == nil %>
+<p>Nobody has ever submitted a poem to the site!  You should change that.</p>
+<% else %>
+<h1>Recently posted poems:</h1>
+   <%= paginate @subs %>
+<div class="poems">
+  <% @subs.each do |sub| %>
+   <%= render :partial => 'subs/box', :locals => {:sub => sub}%> 
+  <% end %>
+
+<% end %>
+</div>
+   <%= paginate @subs %>
+<br /><br />

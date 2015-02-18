@@ -1,0 +1,29 @@
+<h1>Listing subs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Body</th>
+    <th>Ancestry</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subs.each do |sub| %>
+  <tr>
+    <td><%= sub.name %></td>
+    <td><%= sub.body %></td>
+    <td><%= sub.ancestry %></td>
+    <td><%= sub.user_id %></td>
+    <td><%= link_to 'Show', sub %></td>
+    <td><%= link_to 'Edit', edit_sub_path(sub) %></td>
+    <td><%= link_to 'Destroy', sub, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sub', new_sub_path %>

@@ -1,0 +1,13 @@
+<center>
+
+<h2>Chatrooms</h2>
+<% @chatrooms.each_with_index do |cr,i| %>
+
+<p>
+#<%= i + 1 %>: <%= link_to cr.name, cr.url %> (<%= cr.attendings.count %> users)
+</p>
+<% end %>
+</ol>
+<h3 class="makechat">Or make your own...</h3>
+</center>
+<br>

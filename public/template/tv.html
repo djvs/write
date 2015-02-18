@@ -1,0 +1,27 @@
+<div class="tvcontainer">
+    <form name="newtvform">
+        <p>Add a new video here - just copy and paste the YouTube URL into this box:</p>
+        <input type="text" name="video" id="video" ng-model="vid.url">
+        <button class="btn btn-default" type="submit" ng-disabled="!vid.url.length" ng-click="newtv()">add video</button>
+    </form>
+
+    <iframe class="vidframe" ng-if="vidurl.length" ng-src="{{ 'http://www.youtube.com/embed/' + vidurl }}" frameborder="0" width="640" height="480"></iframe>
+
+    <div id="report-category-carousel" class="carousel report-carousel" multicarousel="">
+        <div class="carousel-inner">
+            <div class="item" ng-repeat="vid in videos">
+                <div class="iteminner" ng-style="{'background-image': 'url(http://i4.ytimg.com/vi/' + vid.site_id + '/mqdefault.jpg)'}" ng-click="changeVid(vid)">
+                    <div class="caption">{{ vid.title }}</div> 
+                </div>
+            </div>
+        </div>
+     
+        <a href="#" class="carousel-control left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a href="#" class="carousel-control right">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+</div>

@@ -1,0 +1,3 @@
+<% if pobj.tags == [] %>(none)<% else %>
+<strong>tags:</strong> <%= pobj.tags.group_by{|x|x.tag}.sort_by{|k,v|v.count}.map{|x|link_to x.first, "/tag/" + x.first}.join(", ").html_safe %>
+<% end %>

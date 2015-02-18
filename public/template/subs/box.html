@@ -1,0 +1,47 @@
+<div class="post" id ="post_{{ sub.id }}" ng-if="!sub.dohide">
+    <div class="ptitle">
+        <div class="pbuttons" ng-if="user.id">
+                <a href="#" class="tagb pbutton" data-type="Sub" data-id="{{ sub.id }}" data-title="{{ sub.safename }}" ng-click="editTags(sub,'sub')">
+                    <img src="/images/interface/tag_green.png"> tag
+                </a>
+                <a class="pbutton" ng-if="user.id == sub.user_id" ui-sref="editpoem({ id: sub.id })">
+                    <img src="/images/interface/edit.png"> edit
+                </a>
+
+                <a class="pbutton" ng-if="user.id == sub.user_id" ng-click="deleteSub(sub)">
+                    <img src="/images/interface/no.png"> delete
+                </a>
+        </div>
+        <strong>
+            <a ui-sref="poem({ id: sub.id })"> {{ sub.safename }}</a>
+        </strong> by  <a ui-sref="user({ userId: sub.user.id })"> {{ sub.user.safename }} </a>
+
+        <div class="pull-right"><small>{{ sub.created_at | date:'medium' }}</small></div>
+    </div>
+
+    <div class="pbody" ng-bind-html="sub.body"></div>
+	<div class="ptags">
+        <a ui-sref="poem({ id: sub.id })" class="pbutton fr">
+			<img src="/images/interface/refresh.png">
+            <span>
+                <span class="num">{{ sub.commentcount }}</span>
+                <span ng-pluralize count="sub.commentcount" when="{ '1': 'comment', 'other': 'comments' }">{{ sub.commentcount }}</span>
+            </span>
+		</a>
+
+        <div tags="sub.tags" class="fl"></div>
+
+        <div class="fl" addthis aturl="'http://www.poetrytrain.com/' + sub.safeurl" attitle="sub.title" atdesc="sub.desc"></div>
+        <div class="addthis addthis_bubble_style pull-right" style="text-align:right;">
+            <!-- AddThis Button BEGIN -->
+            <a href="http://api.addthis.com/oexchange/0.8/forward/facebook/offer?pco=tbx32nj-1.0&title={{ sub.name | escape }}&url=http%3A%2F%2Fwww.poetrytrain.com%2Fpoem%2F{{ sub.id }}&pubid=ra-nonexistent" target="_blank" ><img src="http://cache.addthiscdn.com/icons/v1/thumbs/32x32/facebook.png" border="0" alt="Facebook" /></a>
+            <a href="http://api.addthis.com/oexchange/0.8/forward/twitter/offer?pco=tbx32nj-1.0&title={{ sub.name | escape }}&url=http%3A%2F%2Fwww.poetrytrain.com%2F%23%2Fpoem%2F{{ sub.id }}&pubid=ra-nonexistent" target="_blank" ><img src="http://cache.addthiscdn.com/icons/v1/thumbs/32x32/twitter.png" border="0" alt="Twitter" /></a>
+            <a href="http://api.addthis.com/oexchange/0.8/forward/linkedin/offer?pco=tbx32nj-1.0&title={{ sub.name | escape }}&url=http%3A%2F%2Fwww.poetrytrain.com%2F%23%2Fpoem%2F{{ sub.id }}&pubid=ra-nonexistent" target="_blank" ><img src="http://cache.addthiscdn.com/icons/v1/thumbs/32x32/linkedin.png" border="0" alt="LinkedIn" /></a>
+            <a href="http://api.addthis.com/oexchange/0.8/forward/wordpress/offer?pco=tbx32nj-1.0&title={{ sub.name | escape }}&url=http%3A%2F%2Fwww.poetrytrain.com%2F%23%2Fpoem%2F{{ sub.id }}&pubid=ra-nonexistent" target="_blank" ><img src="http://cache.addthiscdn.com/icons/v1/thumbs/32x32/wordpress.png" border="0" alt="LinkedIn" /></a>
+            <a href="http://www.addthis.com/bookmark.php?source=tbx32nj-1.0&=300&pubid=ra-nonexistent&title={{ sub.name | escape }}&url=http%3A%2F%2Fwww.poetrytrain.com%2F%23%2Fpoem%2F{{ sub.id }} " target="_blank"  ><img src="http://cache.addthiscdn.com/icons/v1/thumbs/32x32/more.png" border="0" alt="More..." /></a>
+            <!-- AddThis Button END -->
+        </div>
+	</div>
+
+
+</div>

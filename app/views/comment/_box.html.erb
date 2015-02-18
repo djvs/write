@@ -1,0 +1,56 @@
+<% commentraw = parent.comments.where(:ancestry => nil)
+   if commentraw != []
+     comments = commentraw.map{|x|x.subtree.arrange} 
+   else
+     comments = []
+   end%>
+
+<% if controller.action_name != "comment" %>
+
+<div class="commentbox">
+<h2>Comments</h2>
+
+<% end %>
+
+
+<div class="commentscontainer">
+<% if comments == [] %>
+	<strong>no comments</strong>
+<% else %>
+
+	<% comments.each do |k| %>
+		<%= render :partial => "comment/comment", :locals => {:hash => k, :stackdepth => 0} %>
+	<% end %>
+
+<% end %>
+</div>
+
+
+<% if controller.action_name != "comment" %>
+	<% unless current_user == nil %>
+		<div class="commentform">
+			<%= form_tag "/comment", :class => "commentform", "data-id" => parent.id.to_s do %>
+		
+			<%= hidden_field_tag "pid", parent.id %>
+			<%= hidden_field_tag "pclass", parent.class.name %>
+			<%= hidden_field_tag "rid", "0" %>
+			<p class="replyingto">
+				<img src="/images/interface/refresh.png">&nbsp; 
+				Replying to submission "<strong class="replyingtotitle"><%= parent.safename %></strong>"...
+			<a class="replyclearlink" href="#" style="display:none;">(click here to reply to the poem instead)</a>
+			</p>	
+			<p class="replyingtohiddentitle" style="display:none;"><%= parent.safename %></p>
+			<%= text_area_tag "comment", "", :style => "width:90%;height:200px;", :class => "ckeditor" %>
+		
+			<%= submit_tag "Post" %>
+		
+			<% end %>
+		</div>
+	<% else %>
+		<h3>You need to <a href="#loginform">log in</a> to post comments.</h3>	
+	<% end %>
+<% end %>
+
+
+</div>
+

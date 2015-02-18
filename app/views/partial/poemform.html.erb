@@ -1,0 +1,26 @@
+<strong class="fr">
+    <a ui-sref="poem({ id: sub.id })">View "{{ sub.name }}" &rarr; </a>
+</strong>
+
+<h1>Editing "{{ sub.name }}"</h1>
+
+<form novalidate ng-submit="submitSub()" name="poemform">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+ 
+  <div class="field">
+    <p>
+        <label for="sub_name" >Name</label><br />
+    </p>
+    <input type='text' required name="name" ng-model="sub.name" placeholder="(name)">
+  </div>
+  <div class="field" ng-if="showck">
+    <p>
+        <label for="sub_body">Body</label><br />
+    </p>
+    <textarea rows="45" cols="120" name="body" ng-model="sub.body" ckval="sub.body" ck-editor required></textarea>
+  </div>
+  <div class="actions">
+    <input type="submit" class="btn btn-primary" value="Save">
+  </div>
+</form>
+

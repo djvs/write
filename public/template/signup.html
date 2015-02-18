@@ -1,0 +1,29 @@
+<form no-validate ng-submit="signup()">
+    <div>
+        <h4>username:</h4>
+        <input type="text" ng-model="user.username" placeholder="username" required>
+    </div>
+
+    <div>
+        <h4>email:</h4>
+        <input type="email" ng-model="user.email" placeholder="email" required>
+    </div>
+
+    <div>
+        <h4>password:</h4>
+        <input type="password" ng-model="user.password" placeholder="password" required>
+    </div>
+
+    <div>
+        <h4>confirm password:</h4>
+        <input type="password" ng-model="user.password_confirmation" placeholder="confirm password" required>
+    </div>
+
+    <span style="margin:10px 0px;" class="smerror" ng-if="user.password.length && user.password_confirmation.length && user.password != user.password_confirmation">
+        passwords don't match
+    </span>
+
+    <h4>
+        <button type="submit" class="btn btn-primary" ng-disabled="!user.email.length || !user.username.length || !user.password.length || !user.password_confirmation.length || user.password != user.password_confirmation">sign up</button>
+    </h4>
+</form>

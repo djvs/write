@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <meta property="og:title" content="<%= @sub.name.to_s.gsub(/[^a-zA-Z0-9%._:-]/," ") %>">
+        <meta property="og:site_name" content="Poetry Train">
+        <meta property="og:url" content="http://www.poetrytrain.com/poem/<%= @sub.id.to_s %>">
+        <meta property="og:description" content="<%= sanitize(@sub.body.to_s).gsub(/[^a-zA-Z0-9%._:-]/," ") %>">
+        <meta property="og:image" content="http://www.poetrytrain.com<%= @sub.user.pic.url('medium') %>">
+        <meta property="og:author" content="<%= sanitize(@sub.user.safename) %>">
+    </head>
+    <body>
+        <img src="http://www.poetrytrain.com<%= @sub.user.pic.url('medium') %>">
+        <h3><%= @sub.name %></h3>
+        <p><%= @sub.body.html_safe %></p>
+    </body>
+</html>

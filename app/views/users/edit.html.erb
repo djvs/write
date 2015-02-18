@@ -1,0 +1,29 @@
+<%= content_for :head do %>
+        <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+<% end %>
+
+
+
+
+<h1>Editing your user information</h1>
+<%= form_tag "/me", {:multipart => true } do %>
+<p><strong>Your username:</strong><br />
+<%= text_field_tag "username", current_user.username.to_s %></p>
+
+<p><strong>Your bio:</strong><br />
+<%= text_area_tag "bio", current_user.bio.to_s, :class => "ckeditor"%>
+</p>
+
+
+<p><strong>Picture:</strong><br />
+
+<% if current_user.pic.url != "/pics/original/missing.png" %>
+<img src="<%= current_user.pic.url %>" class="user_pic" />
+<% else %>
+You don't have a picture uploaded yet.
+<% end %><br />
+<%= file_field_tag 'pic' %><br />
+<br /><br /><br />
+<%= submit_tag %>
+
+<% end %>

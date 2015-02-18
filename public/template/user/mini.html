@@ -1,0 +1,21 @@
+<div class="usermini" id="user_{{ user.id }}">
+    <div class="ptitle">
+        <div class="pbuttons">
+             <a ui-sref="me" ng-if="user.id == userid">edit</a> 
+        </div>
+        <strong>
+            <a ui-sref="user({ userId: user.id })"> 
+                {{ user.safename }} 
+            </a>
+        </strong>
+    </div>
+
+    <div class="pbody">
+        <img class="userthumb" ng-src="{{ user.thumb }}" align="left" class="user_pic">
+        <span ng-bind-html="user.bio"></span>
+    </div>
+
+    <div class="ptags" ng-if="user.tags" tags="user"></div>
+
+</div>
+

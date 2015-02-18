@@ -1,0 +1,43 @@
+<div class="commentbox">
+    <h4>Comments</h4>
+    <div class="commentscontainer">
+        <h5>({{ subject.commentcount }}
+            <span ng-if="subject.commentcount == 1">comment</span><span ng-if="subject.commentcount != 1">comments</span>)
+        </h5>
+        <div ng-include="'onecomment.html'" ng-repeat="comment in subject.comments" ng-if="subject.comments.length"></div>
+    </div>
+
+    <div class="commentform" ng-if="user">
+        <div commentform subject="subject" user="user" type='type'></div>
+    </div>
+    <h3 ng-if="!user">You need to <a href="#loginform">log in</a> to post comments.</h3> 
+
+</div>
+<script type="text/ng-template" id="onecomment.html">
+    <div ng-if="!comment.dohide">
+        <div class="comment" data-id="{{ comment.id }}">
+            <div class="commentheader">
+                <img src="/images/interface/no.png" ng-if="user && comment.poster_id == user.id" class="pull-right delcomment" ng-click="delcomment(comment)" style="margin-left:8px;height:14px;">
+                <span class="author">
+                    <a ui-sref="user({userId: comment.poster_id})">{{ comment.postername }}</a>
+                </span>
+
+                <span class="datetime">{{ comment.created_at | date:'medium' }} 
+                </span>
+            </div>
+            <div class="commentbody" ng-bind-html="comment.body">
+            </div>
+            <div class="commentfooter">
+                <div commentform subject="comment" ng-if="comment.doreply" user="user" type="'comment'"></div>
+                <div class="pull-right replybox btn-default" ng-if="user" ng-click="toggleReply(comment)">
+                    <img src="/images/interface/refresh.png"> reply...</img>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left:25px;"> 
+            <div ng-repeat="comment in comment.children" ng-include="'onecomment.html'">
+        </div>
+    </div>
+</script>
+
+

@@ -1,0 +1,29 @@
+<!doctype html>
+<html id="ng-app" ng-app="pt" ng-strct-di>
+    <head>
+        <base href="/">
+         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <meta property="og:image" content="http://poetrytrain.com/logonew.png" />
+        <% if content_for? :metadesc %>
+          <meta name="description" content="<%= yield :metadesc %>">
+        <% else %>
+          <meta name="description" content="Share video written poetry  - poetrytrain.">
+        <% end %>
+        <title><% if content_for? :title %><%= yield :title %> || poetrytrain<% else %> poetrytrain <% end %></title>
+        <%= yield :head %>
+        <%= csrf_meta_tags %>
+        <%= stylesheet_link_tag "application" %>
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body ng-controller="homeCtrl">
+        <%= render :partial => "header" %>
+        <div ui-view class="body"></div>
+        <%= yield %>
+        <%= render :partial => "footer" %>
+        <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+        <%= javascript_include_tag "application" %>
+
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<div ng-if="loadingerror">
+    That user couldn't be found!  Either someone made a bad link, or the user deleted their account.
+</div>
+
+<div ng-cloak ng-show="user.loaded">
+
+    <h1>{{ user.safename | json }}</h1>
+
+    <p>
+        <a class="tagb pbutton" ng-click="editTags(user,'user')">
+            <img src="/images/interface/tag_green.png"> tag user
+        </a>
+    </p>
+
+    <p id="user_{{ user.id }}_tags" style="font-size:80%">
+        <div tags="user.tags"></div>
+    </p>
+
+    <p ng-if="user.pic != '/pics/original/missing.png'">
+        <img ng-src="{{ user.pic }}" class="user_pic">
+    </p>
+
+    <div ng-if="user.bio">
+        <h3>{{ user.safename }}'s bio</h3>
+        <div class="bio" ng-bind-html="user.bio"></div>
+    </div>
+
+    <h3 ng-if="!user.bio">
+        {{ user.safename }} has no bio.
+    </h3>
+
+    <div class="subs" ng-if="subs">
+        <h2>{{ user.safename }}'s poems</h2>
+        <div ng-repeat="sub in subs" sub="sub"></div>
+    </div>
+
+    <div ng-if="!subs">
+        This user has no poems submitted!
+    </div>
+</div>
+

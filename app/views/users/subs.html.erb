@@ -1,0 +1,17 @@
+<% if @user == nil%>
+
+That user couldn't be found!  Did they delete their account?
+
+<% else %>
+
+<% if @subs != nil %>
+<h1><%= @user.safename%>'s poems</h1>
+<% @subs.each do |sub| %>
+<%= render :partial => "subs/box", :locals => {:sub => sub} %>
+<% end %>
+<%= paginate @subs %>
+
+<% else %>
+This user has no poems submitted.
+<% end %>
+<% end %>

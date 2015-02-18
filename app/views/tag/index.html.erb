@@ -1,0 +1,8 @@
+
+<center>
+<h1>Tags used on users and poems:</h1>
+<% @cloud.each do |tag| %>
+<a class="tagcloudbox" href="/tag/<%= tag.first %>"
+  style="font-size:<%= 35 * (tag[1].to_f) / Math.sqrt(tag[1].to_f**2 + 3.5) %>px"><%= tag.first %></a>
+<% end %>
+</center>

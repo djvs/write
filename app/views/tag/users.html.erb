@@ -1,0 +1,10 @@
+
+<h1>Users tagged "<%= params[:tag] %>":</h1>
+<% if @users != nil  and @users != [] %>
+  <% @users.each do |user| %>
+    <%= render :partial => 'users/mini', :locals => {:user => user} %>
+  <% end %>
+  <%= paginate @users, :params => {:controller => "tag", :action => "users" } %>
+<% else%>
+<p><em>No users have been tagged "<%= params[:tag] %>".</em></p>
+<% end %>

@@ -1,0 +1,93 @@
+/* overrides for forem */
+
+#posts .post .user{
+	width:150px !important;	
+	overflow:visible !important;
+}
+#posts .post .user .icon{
+	width:auto !important;
+	height:auto !important;
+}
+.post .user .username a{
+	font-size:14px;
+}
+.post .user .username{
+	word-wrap:break-word;
+	max-width:140px;
+}
+#posts .post .contents span.in_reply_to{
+	display:block;
+	font-size:10px;
+	position:absolute;
+	bottom:5px;
+	right:75px;	
+}
+#posts .post .contents time{
+	display: block;
+	padding: 0px;
+	margin: 0px;
+}
+#posts .post{
+	overflow:hidden;
+}
+table.forums{
+	border-spacing:3px;
+}
+table.forums tr.forum{
+
+}	
+table.forums tr.forum td{
+	background-color:#fafafa;
+}
+table.forums tr.forum td a.title{
+	font-size:18px !important;
+}
+
+table.topics{
+	border-spacing:3px;
+}
+table.topics tr.topic{
+}
+
+table.topics tr.topic td{
+	background-color:#fafafa;
+}
+
+div#topic{
+}
+div#topic h2{
+	font-size:18px !important;
+	padding:2px;
+	margin:0px 0px 10px 0px;
+}
+#posts .post .contents{
+	margin-bottom:19px !important;
+}
+#posts .post .contents .actions{
+	bottom:0px !important;
+	right:0px !important;
+}
+ #posts .post .contents .actions li a, ul.actions form input[type=submit]{
+	display:block !important;
+	background-color:#555 !important;
+	color:white !important;
+	width:70px !important;
+	font-size:10px !important;
+	font-weight:bold !important;
+	padding:0px !important;
+	margin:2px !important;
+	border-width:0px !important;
+}
+
+#posts .post .contents .post_contents{
+	background-color:rgba(250,250,250,0.3);
+	padding:5px;
+	min-height:82px;
+}
+
+#posts .post{
+	margin:0px !important;
+}
+#topic menu{
+	padding-left:0px;
+}

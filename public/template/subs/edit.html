@@ -1,0 +1,20 @@
+
+
+<h1>Editing "<%= @sub.name %>"</h1>
+
+<%= form_tag "/sub/" + @sub.id.to_s + "/edit" do |f| %>
+
+  <div class="field">
+    <label for="sub_name" >Name</label><br />
+    <%= text_field_tag :name, @sub.name%>
+  </div>
+  <div class="field">
+    <label for="sub_body">Body</label><br />
+    <%= text_area_tag :body, @sub.body, :rows => "45", :cols => "120", :class => "ckeditor"%>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Save" %>
+  </div>
+<% end %>
+
+<%= link_to '&#171; View'.html_safe, '/sub/' + @sub.id.to_s %>

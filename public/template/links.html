@@ -1,0 +1,16 @@
+<h1>Links</h1>
+<table class="links" ng-controller="linksCtrl">
+    <tr class="link" ng-repeat="link in links">
+        <td>
+            <img ng-src="{{ link.image_url }}" ng-if="link.image_url">
+        </td>
+        <td>
+            <a ng-href="{{ link.http_link }}" class="link">
+                {{ link.site_name }} 
+            (<a ng-href="{{ link.http_link }}" class="link">{{link.http_link}}</a>)
+            <div class="link_desc" ng-if="link.description">
+                {{ link.description }}
+            </div>	
+        </td>
+    </tr>
+</table>

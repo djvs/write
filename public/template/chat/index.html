@@ -1,0 +1,62 @@
+<center ng-controller="chatCtrl">
+    <div class="chatheader">
+        <div class="existingchats">
+            <ul class="nicegrad">
+                <li>chat rooms</li>
+                <li ng-repeat="room in chatrooms | orderBy:'attendings.length':true" ui-sref="chat.room({ 'room': room.name })" ng-class="{'hilite': room.name == chatroom.name}">
+                   {{ room.name }} ( {{ room.attendings.length }} <span ng-pluralize="room.attendings.length" when="{'1': 'user', 'other': 'users'}"></span>)
+                </li>
+            <div class="showmakechat pull-right">
+               <form no-validate name="createchatroomform" ng-submit="createNewRoom()">
+                    <strong class="makechat" ng-click="showMakeChat = !showMakeChat">or make your own...</strong>
+                    <input type="text" required ng-model="roomname">
+                    <button type="submit" ng-disabled="!roomname.length">create room</button>
+                </form> 
+            </div>
+            </ul>
+        </div>
+    </div>
+    Chat messages last for 24 hours
+    <div class="chat_display" data-id="<%= chatroom.id %>">
+      <div class="chat_displayupper" vresizable>
+          <div class="chat_users">
+            <p ng-if="!chatroom.users.length"><em>(no users)</em></p>
+            <p ng-repeat="user in chatroom.users track by $index">
+                <a style="color: {{user.color }}" ng-if="!user">
+                    (anonymous)
+                </a>
+                <a ui-sref="user({ userId: user.id })" style="color: {{user.color }}" ng-if="user">
+                    {{ user.safename }}
+                </a>
+            </p> 
+          </div>
+          <div class="chat_allmessages">
+            <p ng-if="!chatroom.chats.length"><em>(no messages)</em></p>
+             <div class="chat_message" ng-repeat="chat in chatroom.chats track by $index">
+                <div class="chat_message_date">
+                    {{ chat.created_at | date:'medium' }}
+                </div>
+
+                <div class="chat_message_user">
+                    <a ui-sref="user({ userId: chat.user.id })" style="color: {{ chat.user.color }};">
+                        <span ng-if="chat.user">{{ chat.user.safename }}: </span>
+                        <span ng-if="!chat.user"> (anonymous): </span>
+                    </a>
+                </div> 
+                <div class="chat_message_content" ng-bind-html="chat.message">
+                </div>
+              </div>
+           </div>
+       </div>
+    
+       <div class="chat_mkcomment">
+            <form no-validate ng-submit="postToChat()">
+            <textarea ng-model="chat.message" ckval="chat.message" ck-editor placeholder="enter a comment..."></textarea>
+            <button type="submit">send</button>
+            </form>
+       </div>
+
+    </div>
+
+</center>
+

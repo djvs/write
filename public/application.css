@@ -1,0 +1,70 @@
+html, body{
+	background-color:#B3B6BF !important;
+}
+.topics-count, .posts-count, .views-count{
+	width:100px;
+}
+
+div.category{
+	background-color:#f0f0f0;
+	margin:10px 0px;
+}
+
+label.string, label.text{
+	display:block;
+	font-weight:bold;
+	margin-top:15px;
+}
+.headermenu{
+	background-color:#e8e8e8 !important;
+	border-left:0 !important;
+	border-right:0 !important;
+	border-bottom:1px dashed #ccc !important;
+	border-top:1px dashed #ccc !important;
+}
+
+.body{
+	border:0 !important;
+}
+.header{
+	border:0 !important;
+
+}
+#topic menu a{
+	background-color: #bbb;
+	padding: .5em;
+	display: inline-block;
+	color: #000;
+	text-decoration: none;
+	margin: 0;
+
+}
+
+.user .username{
+	font-size:18px;
+	padding:4px;
+}
+
+div.pagetitle img{
+	height:63px;
+}
+
+div.otherlinks img{
+
+	height:45px !important;
+}
+
+table.links{
+
+}
+table.links td{
+    padding:5px;
+}
+
+.carousel_right, .carousel_left{
+    outline: 0 none;
+}
+
+input#video{
+    width:450px;
+}

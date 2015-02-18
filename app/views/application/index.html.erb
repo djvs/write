@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>poetry train</title>
+<style type="text/css">
+<!--
+div{
+	font-family:Verdana, sans-serif;
+	color:#8A8A8A;
+}
+
+body{
+	background-image:url("bigtrain.png");
+	background-attachment:fixed;
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+
+.mainbody{
+	background-color:white;
+	margin:0 auto;
+	padding:6px;
+	width:450px;
+	float:left;
+	border:solid 1px #8a8a8a;
+}
+a{
+	text-decoration:none;
+	color:green !important;
+}
+
+.transp50{
+	=moz-opacity:.50;
+filter:alpha(opacity=50);
+	opacity:.50;
+}
+
+span{
+	font-weight:bold;
+	display:block;
+	padding:4px;
+}
+
+
+span.title{
+	font-size:160%;
+}
+span.big{
+	font-size:140%;	
+}
+
+-->
+</style>
+<meta property="og:image" content="/bigtrain.png"/>
+</head>
+<body>
+<center>
+<% ptarray = ["DFLH6Q9Bf0Y","N_s7DH3kFzQ","ejE6llZFPTM","0us3lcE3Zi0","jF35tqgpOxg","j-mGoJKebiI","p950bvlYOlA","9VN4T1HYHUg","9RL1MqCbiz8","uk4hmth41MQ","UQzkxwh5p8k","ISCjFdm8lZY","XTkx0VDEv78","5aDDTwIqF-E"] %>
+<% vidid = ptarray[rand(ptarray.length)] %>
+
+
+<div class="mainbody">
+<span class="title">Welcome to PoetryTrain!</span>
+<span class="big">Featured video from one of our passengers:</span>
+
+<div>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/<%= vidid %>" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<a href="/home">
+<span class="big">Click here to get started.</span>
+</a>
+
+</div>
+</center>
+
+</body>
+</html>

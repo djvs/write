@@ -1,0 +1,99 @@
+<%= content_for :head do %>
+    <link rel="stylesheet" href="/carousel/config.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/carousel/skin_light.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="/carousel/jquery.easing.1.3.js"></script>    
+    <script type="text/javascript" src="/carousel/jquery.elegantcarousel.min_ob.js"></script>
+    <script type="text/javascript" src="/carousel/tv.js"></script>
+<% end %>
+
+<form method="post" action="/tv/new">
+<p>Add a new video here - just copy and paste the YouTube URL into this box:</p>
+<input type="text" name="video" id="video">
+
+<input type="submit" value="add video">
+</form>
+
+<iframe class="vidframe" src="http://www.youtube.com/embed/<%= @videos.first.site_id %>" frameborder="0" width="800" height="600"></iframe>
+
+<div id="config">
+	<a href="" class="open_config" title="config">open</a>
+    <div class="config_inner">
+    	<div class="left"></div>
+    	<div class="middle">
+        	<div class="column">
+            	<h3>Settings</h3>
+                <form action="" method="get">
+                    <label for="delay">Delay</label><input type="text" name="delay" value="150" /><br />
+                    <label for="fade">Fade</label><input type="text" name="fade" value="300"/><br />
+                    <label for="slide">Slide</label><input type="text" name="slide"value="500" /><br />
+                    <input type="hidden" name="effect"value="fade" />
+                <input type="submit" value="update" name="update_settings" />
+            </div>
+            
+            <div class="column">
+            	<h3>Loop</h3>
+                    <label class="loop_radio" for="radio_yes">No</label><input class="radio" type="radio" name="loop" value="false" checked="checked"  />
+                    <label class="loop_radio" for="radio_yes">Yes</label><input class="radio radio_last" type="radio" name="loop" value="true" /><br />
+                <p class="spacer"> </p>    
+                <h3>Autoplay</h3>
+                    <label class="loop_radio" for="radio_yes">No</label><input class="radio" type="radio" name="autoplay" value="false"   />
+                    <label class="loop_radio" for="radio_yes">Yes</label><input class="radio radio_last" type="radio" name="autoplay" value="true" checked="checked"/><br />    
+                    <label for="time">Time</label><input type="text" name="time" value="3000" />
+                </form>
+            </div>
+            
+            <div class="column">
+            	<h3>Fade</h3>
+                <div class="active" ><center><a class="horizontal" href="horizontal.php?delay=150&fade=300&slide=500&effect=fade&loop=false&autoplay=true&time=3000">fade_horizontal</a></center></div>
+                <div><center><a class="vertical" href="vertical.php?delay=150&fade=300&slide=500&effect=fade&loop=false&autoplay=true&time=3000">fade_vertical</a></center></div>
+            </div>
+            
+             <div class="column last">
+            	<h3>Slide</h3>
+                <div  ><center><a class="horizontal" href="horizontal.php?delay=150&fade=300&slide=500&effect=slide&loop=false&autoplay=true&time=3000">fade_horizontal</a></center></div>
+                <div><center><a class="vertical" href="vertical.php?delay=150&fade=300&slide=500&effect=slide&loop=false&autoplay=true&time=3000">slide_vertical</a></center></div>
+            </div>
+        
+        </div>
+    	<div class="right"></div>
+    </div>
+</div>
+
+<div id="main">
+    	<div class="inner">
+        	<div class="example horizontal">
+            	<div class="carousel">
+                	<a class="carousel_prev carousel_left" href="">prev</a>
+                	<div class="carousel_container">
+                        <ul class="portfolio_items">
+
+                    <% @videos.shuffle.each do |vid| %>
+                        <% if vid.site_name == "youtube" %>
+                        <li>
+                            <div class="inner">
+                            <a href="">
+                                <img src="http://i4.ytimg.com/vi/<%= vid.site_id %>/mqdefault.jpg" title="<%= vid.title %>" data-site-id="<%= vid.site_id %>" data-site="<%= vid.site_name %>">
+                            </a>
+                                    <div class="caption">
+                                <a href="#" class="openvideo">
+                                <img src="http://i4.ytimg.com/vi/<%= vid.site_id %>/mqdefault.jpg" title="<%= vid.title %>" data-site-id="<%= vid.site_id %>" data-site="<%= vid.site_name %>">
+                                </a>
+                            </div>
+                            </div>
+                        </li>
+
+                        <% end %>
+                    <% end %>
+
+
+                        </ul>
+                	</div>
+                    <a class="carousel_next carousel_right" href="">next</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+

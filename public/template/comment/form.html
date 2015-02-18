@@ -1,0 +1,20 @@
+<form class="commentform" no-validate ng-submit="postComment()">
+    <input type="hidden" name="pid" ng-model="subject.id">
+    <input type="hidden" name="pclass" ng-model="subject.type">
+
+    <p class="replyingto">
+        <img src="/images/interface/refresh.png">&nbsp; 
+        Commenting on "<strong class="replyingtotitle">{{ subject.name }}</strong>"...
+        <a class="replyclearlink" href="#" style="display:none;">
+            (click here to reply to the poem instead)
+        </a>
+    </p>	
+    <p class="replyingtohiddentitle" style="display:none;">
+        {{ subject.safename }}
+    </p>
+    <textarea ng-name="{{ randomstr }}" ng-model="comment.body" ckval="comment.body" ck-editor style="width:90%;height:200px;"></textarea>
+    <div>
+        <button type="submit" class="btn btn-primary"> post comment </button>
+    </div>
+</form>
+

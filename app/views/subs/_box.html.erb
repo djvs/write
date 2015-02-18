@@ -1,0 +1,53 @@
+
+<div class="post" id ="post_<%= sub.id.to_s %>">
+<div class="ptitle">
+    <div class="pbuttons">
+    <% if current_user != nil%>
+	<a href="#" class="tagb" data-type="Sub" data-id="<%= sub.id.to_s %>" data-title="<%= sub.name.gsub(/[^a-zA-Z0-9_ .,~-]/,"")%>" data-tags="<%= sub.tags.where(:user_id => current_user.id).to_a.map{|x|x.tag}.join(", ") %>">
+	 <img src="/images/interface/tag_green.png"> tag
+	</a>
+	<% if current_user.id == sub.user_id %>
+        &bull; <a href="/poem/<%= sub.id.to_s %>/edit"><img src="/images/interface/edit.png"> edit</a> &bull; 
+         <a href="#" class="deleteb" data-id="<%= sub.id.to_s %>"><img src="/images/interface/no.png"> delete</a>
+	<% end %>
+    <% end %>
+    </div>
+
+<strong><a href="/poem/<%= sub.id.to_s %>"><%= sub.name %></a></strong> by  <%= link_to sub.user.safename, sub.user.safeurl  %>
+
+</div>
+
+<div class="pbody">
+  
+  <%= sub.body.html_safe %>
+</div>
+
+	<div class="ptags">
+		<% if sub.tags != [] %>
+			<%= render :partial => "tag/tags", :locals => {:pobj => sub} %>
+		<% end %>
+
+			<!-- AddThis Button BEGIN -->
+			<div class="addthis_toolbox addthis_default_style" style="float:right;width:140px;text-align:right;padding:0px 5px;">
+				<% url = "http://www." + request.domain + sub.safeurl
+				   title = sub.sanitizedname
+				%>
+				<a class="addthis_button_preferred_1" addthis:url="<%= url %>" addthis:title="<%= title %>"></a>
+				<a class="addthis_button_preferred_2" addthis:url="<%= url %>" addthis:title="<%= title %>"></a>
+				<a class="addthis_button_preferred_3" addthis:url="<%= url %>" addthis:title="<%= title %>"></a>
+				<a class="addthis_button_preferred_4" addthis:url="<%= url %>" addthis:title="<%= title %>"></a>
+				<a class="addthis_button_compact"  addthis:url="<%= url %>" addthis:title="<%= title %>"></a>
+				<a class="addthis_counter addthis_bubble_style"  addthis:url="<%= url %>" addthis:title="<%= title %>"></a>
+			</div>
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50e87d41635515a5"></script>
+			<!-- AddThis Button END -->
+
+
+		<a href="<%= sub.safeurl %>" style="float:right;">
+			<img src="/images/interface/refresh.png">
+			<% if sub.comments == [] %>no comments<% else %><%= count = sub.comments.count %> comment<%= (count > 1) ? "s" : "" %> <% end %>
+		</a>
+	</div>
+
+</div>
+

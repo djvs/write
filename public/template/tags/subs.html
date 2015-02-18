@@ -1,0 +1,12 @@
+
+<h1>Poems tagged "<%= params[:tag] %>":</h1>
+<% if @subs != nil and @subs != []  %>
+  <% @subs.each do |sub| %>
+   <%= render :partial => 'subs/box', :locals => {:sub => sub}%> 
+  <% end %>
+  <%= paginate @subs, :params => {:controller => "tag", :action => "subs" } %>
+<br /><br />
+<% else%>
+<p><em>No poems have been tagged "<%= params[:tag] %>".</em></p>
+<% end %>
+

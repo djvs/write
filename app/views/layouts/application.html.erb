@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+<meta property="og:image" content="http://poetrytrain.com/logonew.png" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/pt.js" type="text/javascript"></script>
+<script src="/jquery.masonry.min.js"></script>
+  <% if content_for? :metadesc %>
+    <meta name="description" content="<%= yield :metadesc %>">
+  <% else %>
+    <meta name="description" content="Poetrytrain is a website for sharing text and video poetry.">
+  <% end %>
+  <link rel="stylesheet" media="all" type="text/css" href="/application.css"></style>
+  <%= stylesheet_link_tag "application" %>
+  <link rel="stylesheet" media="all" type="text/css" href="/forem.css"></style>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+  <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+  <title><% if content_for? :title %><%= yield :title %> || poetrytrain<% else %> poetrytrain <% end %></title>
+</head>
+<body>
+<% if notice != nil %>
+  <div class="notice"><%= notice %></div>
+<% end %><% if alert != nil %>
+       <div class="alert"><%= alert %></div>
+<% end %>
+
+<% if @notice != nil %>
+  <div class="notice"><%= @notice.html_safe %></div>
+<% end %>
+<% if @alert != nil %>
+       <div class="alert"><%= @alert %></div>
+<% end %>
+
+<%= render :partial => "header" %>
+
+
+<div class="body">
+<%= yield %>
+</div>
+
+<%= render :partial => "footer" %>
+
+</body>
+</html>

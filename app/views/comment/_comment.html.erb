@@ -1,0 +1,30 @@
+<% hash.each do |pcomment,children| %>
+		<div class="comment" data-id="<%= pcomment.id %>" style="margin-left:<%= (18 * stackdepth).to_s %>px;">
+			<div class="commentheader" style="background-color:#<% 3.times do %><%= (240 - stackdepth * 16).to_s(16) %><% end %>">
+				<span class="author">
+					<%= link_to pcomment.poster.safename, pcomment.poster.safeurl %>	
+				</span>
+			
+				<% if current_user != nil %>
+					<a href="#" class="commentreplylink" data-id="<%= pcomment.id %>" data-name="<%= pcomment.sanitizedname %>">
+						&nbsp;<img src="/images/interface/refresh.png"> Reply
+					</a>
+					<% if (pcomment.poster == current_user) %>
+						<a href="#" class="commentdeletelink" data-id="<%= pcomment.id %>" data-name="<%= pcomment.sanitizedname %>">
+							&nbsp;<img src="/images/interface/no.png" title="Delete" alt="Delete"> Delete
+						</a>
+					<% end %>
+				<% end %>
+				<span class="datetime">
+					<%= pcomment.created_at %>
+				</span>
+			</div>
+			<div class="commentbody">
+				<%= pcomment.body.html_safe %>
+			</div>	
+		</div>
+
+  <% if children != {} %>
+    <%= render :partial => "comment/comment", :locals => {:hash => children, :stackdepth => stackdepth + 1} %>
+  <% end %>
+<% end %>

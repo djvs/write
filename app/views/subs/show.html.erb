@@ -1,0 +1,10 @@
+<%= content_for :title do %>
+"<%= @sub.sanitizedname %>"
+<% end %>
+<%= content_for :metadesc do %>
+<%= @sub.safemetadesc %>
+<% end %>
+
+<%= render :partial => "box", :locals => {:sub => @sub} %>
+<br>
+<%= render :partial => "comment/box", :locals => {:parent => @sub} %>

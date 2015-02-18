@@ -1,0 +1,12 @@
+<form ng-submit="finish()" no-validate>
+    <div class="modal-header">
+        <h3>edit tags for "{{ item.name }}"</h3>
+    </div>
+    <div class="modal-body">
+        <input type="text" ng-model="tags.text" ng-if="!loading" style="width:100%;" required>
+        <img src="/img/loading.gif" ng-if="loading">
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-right" ng-disabled="!tags.text.length">save</button>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+<h1>Links</h1>
+<table class="links">
+<% @links.each do |link| %>
+<tr class="link">
+    <td>
+        <% if link.image_url != nil %>
+            <%= image_tag link.image_url %> 
+        <% end %>
+    </td>
+    <td>
+        <%= link_to link.site_name, link.http_link, :class => 'link' %>
+        <% if link.description.to_s != "" %>
+            <div class="link_desc">
+                <%= link.description %>	
+            </div>	
+        <% end %>
+    </td>
+</tr>
+
+<% end %>
+</table>

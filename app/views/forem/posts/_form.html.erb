@@ -1,0 +1,5 @@
+<%= f.input :text, :required => false, :input_html => {:class => "ckeditor"} %>
+
+<% if params[:reply_to_id] %>
+  <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
+<% end %>

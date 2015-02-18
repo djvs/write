@@ -1,0 +1,31 @@
+<div ng-controller="profileCtrl">
+    <h1>Editing your user information</h1>
+
+    <form novalidate ng-upload="upcallback(content)" name="profileform" id="profileform" action="/me">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+        <p>
+            <strong>Your username:</strong>
+        </p>
+        <p>
+            <input type="text" required name="username" id="username" ng-model="user.username">
+        </p>
+        <p>
+            <strong>Your bio:</strong>
+        </p>
+        <p>
+            <textarea name="bio" ng-model="user.bio" ck-editor ckval="user.bio"></textarea>
+        </p>
+        <p>
+            <strong>Picture:</strong>
+        </p>
+        <p>
+            <img ng-src="{{ user.pic }}" class="user_pic">
+        </p>
+        <p>
+            <input type="file" name="pic">
+        </p>
+        <input type="submit" value="Save changes" upload-submit class="btn btn-primary">
+    </form>
+
+</div>

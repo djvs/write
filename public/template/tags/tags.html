@@ -1,0 +1,11 @@
+<div class="tagscontainer">
+    <span ng-if="!tags.length">
+        (no tags)
+    </span>
+    <span ng-if="tags.length">
+        <strong>tags:</strong>
+        <span ng-repeat="tag in tags">
+            <a  ui-sref="tag({ tag: tag[0].tag })">{{ tag[0].tag }}</a><span ng-if="$index != tags.length - 1">,</span>
+        </span>
+    </span>
+</div>

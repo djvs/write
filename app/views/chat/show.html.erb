@@ -1,0 +1,19 @@
+<%= content_for :head do %>
+<script type="text/javascript" src="/chat.js"></script>
+<% end %>
+
+<center>
+<h3>Chat: <%= @chatroom.name %></h3>
+
+
+<%= form_tag "/chat/" + @chatroom.id.to_s + "/post", :class => "chat_form", 'data-id' => @chatroom.id.to_s do %>
+
+<%= render :partial => "displaywindow", :locals => {:chatroom => @chatroom}  %>
+
+<%= text_field_tag "body", "", :class => "messagebody" %>
+
+<br><%= submit_tag "Post" %>
+
+<% end %>
+
+</center>

@@ -1,0 +1,29 @@
+<div class="chat_display" data-id="<%= chatroom.id %>">
+  <div class="chat_users">
+	  <% chatroom.users.each do |user| %>
+		    <%= link_to user.safename, user.safeurl, :style => "color:" + user.color  %>
+	    <br>
+	  <% end %>
+  </div>
+
+  <div class="chat_allmessages">
+
+  	<% chatroom.chats.each do |msg| %>
+
+ 	 <div class="chat_message">
+		<div class="chat_message_date"><%= msg.created_at.strftime("%D %H:%M:%S") %></div>
+		<div class="chat_message_user">
+		    <%= link_to msg.user.safename, msg.user.safeurl, :style => "color:" + msg.user.color  %>:
+		</div> 
+		<div class="chat_message_content">
+		    <%= msg.message.to_s.html_safe %>
+		</div>
+	
+	  </div>
+	  <% end %>
+	
+   </div>
+
+</div>
+
+

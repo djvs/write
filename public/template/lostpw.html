@@ -1,0 +1,13 @@
+<h5>
+    Lost your password? Enter your email here and we'll send you reset instructions:
+</h5>
+<form no-validate ng-submit="submit()">
+    <div>
+        <input type="email" placeholder="email" ng-model="user.email" required>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" ng-disabled="!user.email.length">send instructions</button>
+    </div>
+    <div class="smsuccess" ng-if="accepted">instructions sent</div>
+    <div class="smerror" ng-if="rejected">something went wrong - probably the wrong email?</div>
+</form>
